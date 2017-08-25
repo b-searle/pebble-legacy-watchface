@@ -1,0 +1,89 @@
+#include <pebble.h>
+#include "bluetooth_indicator.h"
+#include "bwd.h"
+
+BitmapWithData bluetooth_disconnected;
+BitmapWithData bluetooth_connected;
+BitmapWithData bluetooth_mask;
+Layer *bluetooth_layer;
+bool bluetooth_state = false;
+
+bool bluetooth_invert = false;
+bool bluetooth_opaque_layer = false;
+
+void bluetooth_layer_update_callback(Layer *me, GContext *ctx) {
+
+  GRect box = layer_get_frame(me);
+  box.origin.x = 0;
+  box.origin.y = 0;
+
+  GCompOp fg_mode;
+  GCompOp mask_mode;
+
+  if (bluetooth_invert) {
+    fg_mode = GCompOpSet;
+    mask_mode = GCompOpAnd;
+  } else {
+    fg_mode = GCompOpAnd;
+    mask_mode = GCompOpSet;
+  }
+
+  bool new_state = bluetooth_connection_service_peek();
+  if (new_state != bluetooth_state) {
+    bluetooth_state = new_state;
+    if (!bluetooth_state) {
+      // We just lost the bluetooth connection.  Ring the buzzer.
+      vibes_short_pulse();
+    }
+  }
+
+  if (!bluetooth_state) {
+    // We always draw the disconnected bitmap (except in the IM_off
+    // case, of course).
+    if (bluetooth_opaque_layer) {
+      if (bluetooth_mask.bitmap == NULL) {
+	bluetooth_mask = png_bwd_create(RESOURCE_ID_BLUETOOTH_MASK);
+      }
+      graphics_context_set_compositing_mode(ctx, mask_mode);
+      graphics_draw_bitmap_in_rect(ctx, bluetooth_mask.bitmap, box);
+    }
+    if (bluetooth_disconnected.bitmap == NULL) {
+      bluetooth_disconnected = png_bwd_create(RESOURCE_ID_BLUETOOTH_DISCONNECTED);
+    }
+    graphics_context_set_compositing_mode(ctx, fg_mode);
+    graphics_draw_bitmap_in_rect(ctx, bluetooth_disconnected.bitmap, box);
+  }
+}
+
+// Update the bluetooth guage.
+void handle_bluetooth(bool connected) {
+  layer_mark_dirty(bluetooth_layer);
+}
+
+void init_bluetooth_indicator(Layer *window_layer, int x, int y, bool invert, bool opaque_layer) {
+  bluetooth_invert = invert;
+  bluetooth_opaque_layer = opaque_layer;
+  bluetooth_layer = layer_create(GRect(x, y, 18, 18));
+  layer_set_update_proc(bluetooth_layer, &bluetooth_layer_update_callback);
+  layer_add_child(window_layer, bluetooth_layer);
+  bluetooth_connection_service_subscribe(&handle_bluetooth);
+}
+
+void move_bluetooth_indicator(int x, int y, bool invert, bool opaque_layer) {
+  bluetooth_invert = invert;
+  bluetooth_opaque_layer = opaque_layer;
+  layer_set_frame((Layer *)bluetooth_layer, GRect(x, y, 18, 18));
+}
+
+void deinit_bluetooth_indicator() {
+  bluetooth_connection_service_unsubscribe();
+  layer_destroy(bluetooth_layer);
+  bluetooth_layer = NULL;
+  bwd_destroy(&bluetooth_disconnected);
+  bwd_destroy(&bluetooth_connected);
+  bwd_destroy(&bluetooth_mask);
+}
+
+void refresh_bluetooth_indicator() {
+  layer_mark_dirty(bluetooth_layer);
+}

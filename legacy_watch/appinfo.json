@@ -1,0 +1,206 @@
+{
+    "appKeys": {},
+    "companyName": "b.searle@outlook.com",
+    "longName": "Legacy Watch",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "images/donna.png",
+                "name": "DONNA",
+                "type": "png"
+            },
+            {
+                "file": "images/icon.png",
+                "menuIcon": true,
+                "name": "ICON",
+                "type": "png"
+            },
+            {
+                "file": "images/logo.png",
+                "name": "DW_LOGO",
+                "type": "png"
+            },
+            {
+                "file": "images/handles.png",
+                "name": "HANDLES",
+                "type": "png"
+            },
+            {
+                "file": "images/amy.png",
+                "name": "AMY",
+                "type": "png"
+            },
+            {
+                "file": "images/angel.png",
+                "name": "ANGEL",
+                "type": "png"
+            },
+            {
+                "file": "images/war.png",
+                "name": "WAR",
+                "type": "png"
+            },
+            {
+                "file": "images/twelve.png",
+                "name": "TWELVE",
+                "type": "png"
+            },
+            {
+                "file": "images/eleven.png",
+                "name": "ELEVEN",
+                "type": "png"
+            },
+            {
+                "file": "images/ten.png",
+                "name": "TEN",
+                "type": "png"
+            },
+            {
+                "file": "images/nine.png",
+                "name": "NINE",
+                "type": "png"
+            },
+            {
+                "file": "images/eight.png",
+                "name": "EIGHT",
+                "type": "png"
+            },
+            {
+                "file": "images/seven.png",
+                "name": "SEVEN",
+                "type": "png"
+            },
+            {
+                "file": "images/six.png",
+                "name": "SIX",
+                "type": "png"
+            },
+            {
+                "file": "images/five.png",
+                "name": "FIVE",
+                "type": "png"
+            },
+            {
+                "file": "images/two.png",
+                "name": "TWO",
+                "type": "png"
+            },
+            {
+                "file": "images/rose.png",
+                "name": "ROSE",
+                "type": "png"
+            },
+            {
+                "file": "images/bluetooth_disconnected.png",
+                "name": "BLUETOOTH_DISCONNECTED",
+                "type": "png"
+            },
+            {
+                "file": "images/bluetooth_mask.png",
+                "name": "BLUETOOTH_MASK",
+                "type": "png"
+            },
+            {
+                "file": "images/charging_mask.png",
+                "name": "CHARGING_MASK",
+                "type": "png"
+            },
+            {
+                "file": "images/charging.png",
+                "name": "CHARGING",
+                "type": "png"
+            },
+            {
+                "file": "images/battery_gauge_empty.png",
+                "name": "BATTERY_GAUGE_EMPTY",
+                "type": "png"
+            },
+            {
+                "file": "images/simm_master.png",
+                "name": "MASTER",
+                "type": "png"
+            },
+            {
+                "file": "images/martha.png",
+                "name": "MARTHA",
+                "type": "png"
+            },
+            {
+                "file": "images/rory.png",
+                "name": "RORY",
+                "type": "png"
+            },
+            {
+                "file": "images/river.png",
+                "name": "RIVER",
+                "type": "png"
+            },
+            {
+                "file": "images/clara.png",
+                "name": "CLARA",
+                "type": "png"
+            },
+            {
+                "file": "images/cyberman.png",
+                "name": "CYBERMAN",
+                "type": "png"
+            },
+            {
+                "file": "images/dalek.png",
+                "name": "DALEK",
+                "type": "png"
+            },
+            {
+                "file": "images/tardis.png",
+                "name": "TARDIS",
+                "type": "png"
+            },
+            {
+                "file": "images/four.png",
+                "name": "FOUR",
+                "type": "png"
+            },
+            {
+                "file": "images/three.png",
+                "name": "THREE",
+                "type": "png"
+            },
+            {
+                "file": "images/one.png",
+                "name": "ONE",
+                "type": "png"
+            },
+            {
+                "characterRegex": "[0-9JFMASONDTWanebrpyulgctovdhi ]",
+                "file": "fonts/Timelord-Solid.ttf",
+                "name": "TIMELORD_SOLID_12",
+                "type": "font"
+            },
+            {
+                "characterRegex": "[0-9:APMapm ]",
+                "file": "fonts/Timelord-Solid.ttf",
+                "name": "TIMELORD_SOLID_24",
+                "type": "font"
+            },
+            {
+                "file": "images/battery_gauge_mask.png",
+                "name": "BATTERY_GAUGE_MASK",
+                "type": "png"
+            },
+            {
+                "file": "images/battery_gauge_charged.png",
+                "name": "BATTERY_GAUGE_CHARGED",
+                "type": "png"
+            }
+        ]
+    },
+    "sdkVersion": "2",
+    "shortName": "Legacy Watch",
+    "uuid": "38960965-f815-405c-b36c-40d886cba59f",
+    "versionCode": 1,
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": true
+    }
+}
